@@ -1,5 +1,6 @@
 import { Construct } from '@aws-cdk/core';
 import { ContainerDefinition } from '../container-definition';
+import { CfnTaskDefinition } from '../ecs.generated';
 import { AwsLogDriver, AwsLogDriverProps } from './aws-log-driver';
 
 /**
@@ -45,4 +46,11 @@ export interface LogDriverConfig {
    * The configuration options to send to the log driver.
    */
   readonly options?: { [key: string]: string };
+
+  /**
+   * The secret options to send to the log driver.
+   *
+   * @default - No secret value provided
+   */
+  readonly secretOptions?: CfnTaskDefinition.SecretProperty[];
 }

@@ -22,6 +22,10 @@ const taskDefinition = new ecs.Ec2TaskDefinition(stack, 'TaskDef', {
 const container = taskDefinition.addContainer('web', {
   image: ecs.ContainerImage.fromRegistry('amazon/amazon-ecs-sample'),
   memoryLimitMiB: 256,
+  logging: new ecs.SplunkLogDriver({
+    token: cdk.SecretValue.secretsManager('arn:aws:secretsmanager:us-west-2:803860917211:secret:splunk_test-rVIHly'),
+    url: 'my-splunk-url',
+  }),
 });
 
 container.addPortMappings({

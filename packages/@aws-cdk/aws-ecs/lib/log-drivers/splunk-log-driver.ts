@@ -129,7 +129,6 @@ export class SplunkLogDriver extends LogDriver {
     return {
       logDriver: 'splunk',
       options: stringifyOptions({
-        'splunk-token': this.props.token,
         'splunk-url': this.props.url,
         'splunk-source': this.props.source,
         'splunk-sourcetype': this.props.sourceType,
@@ -143,6 +142,7 @@ export class SplunkLogDriver extends LogDriver {
         'splunk-gzip-level': this.props.gzipLevel,
         ...renderCommonLogDriverOptions(this.props),
       }),
+      secretOptions: [{ name: 'splunk-token', valueFrom: this.props.token.toString() }],
     };
   }
 }

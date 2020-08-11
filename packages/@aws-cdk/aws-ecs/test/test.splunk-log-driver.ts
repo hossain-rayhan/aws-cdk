@@ -33,9 +33,14 @@ export = {
           LogConfiguration: {
             LogDriver: 'splunk',
             Options: {
-              'splunk-token': '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
               'splunk-url': 'my-splunk-url',
             },
+            SecretOptions: [
+              {
+                Name: 'splunk-token',
+                ValueFrom: '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
+              },
+            ],
           },
         },
       ],
@@ -62,9 +67,14 @@ export = {
           LogConfiguration: {
             LogDriver: 'splunk',
             Options: {
-              'splunk-token': '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
               'splunk-url': 'my-splunk-url',
             },
+            SecretOptions: [
+              {
+                Name: 'splunk-token',
+                ValueFrom: '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
+              },
+            ],
           },
         },
       ],
@@ -92,10 +102,15 @@ export = {
           LogConfiguration: {
             LogDriver: 'splunk',
             Options: {
-              'splunk-token': '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
               'splunk-url': 'my-splunk-url',
               'splunk-sourcetype': 'my-source-type',
             },
+            SecretOptions: [
+              {
+                Name: 'splunk-token',
+                ValueFrom: '{{resolve:secretsmanager:my-splunk-token:SecretString:::}}',
+              },
+            ],
           },
         },
       ],
